@@ -1,0 +1,384 @@
+:root {
+  --primary-bg-color: #9815f6f3;
+  --card-width: 300px; /* Incrementar tamaño de la tarjeta */
+  --card-height: 470px; /* Incrementar tamaño de la tarjeta */
+  --card-shadow: rgba(0,0,0,0.15);
+  --text-color: #333;
+  --font-primary: 'Brush Script MT', cursive;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--primary-bg-color);
+  margin: 0;
+  font-family: var(--font-primary);
+}
+
+.birthdayCard {
+  position: relative;
+  width: var(--card-width);
+  height: var(--card-height);
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform: perspective(2500px);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.birthdayCard:hover {
+  transform: perspective(2500px) rotate(5deg);
+  box-shadow: inset 100px 20px 100px var(--card-shadow), 0 10px 100px var(--card-shadow);
+}
+
+.birthdayCard:hover .cardFront {
+  transform: rotateY(-160deg); 
+}
+
+.birthdayCard:hover .front-text,
+.birthdayCard:hover .wrap-deco,
+.birthdayCard:hover .wrap-decoTwo,
+.birthdayCard:hover .plate {
+  display: none;
+}
+
+.cardFront {
+  position: relative;
+  background-color: #fff;
+  width: var(--card-width);
+  height: var(--card-height);
+  overflow: hidden;
+  transform-origin: left;
+  box-shadow: inset 100px 20px 100px rgba(0,0,0,.13), 30px 0 50px rgba(0,0,0,0.1);
+  transition: transform 0.4s;
+}
+
+.happy, .toyou {
+  position: relative;
+  font-family: didot, serif;
+  text-align: center;
+  backface-visibility: hidden;
+  font-size: 30px; 
+}
+
+.happy {
+  top: 198px;
+}
+
+.toyou {
+  top: 123px;
+}
+
+.bday {
+  position: relative;
+  font-family: Arial, sans-serif;
+  font-size: 35px;
+  text-align: center;
+  top: 163px;
+}
+
+.wrap-deco {
+  position: absolute;
+  top: -230px;
+  left: -200px;
+}
+
+.decorations, .decorationsTwo, .decorationsThree {
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  border: 3px solid var(--text-color);
+  border-radius: 50%;
+}
+
+.decorations:before, 
+.decorations:after, 
+.decorationsTwo:before, 
+.decorationsTwo:after, 
+.decorationsThree:before, 
+.decorationsThree:after {
+  content: "";
+  position: absolute;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  width: 0;
+  height: 0;
+}
+
+.decorations:before {
+  border-top: 40px solid #f15bb5;
+  top: 297px;
+  left: 210px;
+  transform: rotate(-5deg);
+}
+
+.decorations:after {
+  border-top: 40px solid #f4d35e;
+  top: 288px;
+  left: 260px;
+  transform: rotate(-17deg);
+}
+
+.decorationsTwo:before {
+  border-top: 40px solid #00f5d4;
+  top: 268px;
+  left: 315px;
+  transform: rotate(-30deg);
+}
+
+.decorationsTwo:after,
+.decorationsThree:after {
+  border-top: 40px solid #9b5de5;
+  top: 238px;
+  left: 355px;
+  transform: rotate(-40deg);
+}
+
+.wrap-decoTwo {
+  transform: scaleX(-1);
+  position: absolute;
+  top: -230px;
+  left: 445px; 
+}
+
+.decorationsThree:before {
+  border-top: 40px solid #00bbf9;
+  top: 268px;
+  left: 315px;
+  transform: rotate(-30deg);
+}
+
+.plate {
+  position: absolute;
+  width: 130px;
+  height: 5px;
+  background-color: var(--primary-bg-color);
+  left: 60px;
+  top: 213px;
+}
+
+.cake {
+  position: absolute;
+  overflow: hidden;
+  width: 100px;
+  height: 50px;
+  background-color: #f15bb5;
+  border-radius: 10px 10px 0 0;
+  top: -50px;
+  left: 15px;
+  box-shadow: inset 0 -15px #f9c74f, inset 0 15px #432818;
+}
+
+.cake:before {
+  content: "";
+  position: absolute;
+  background-color: #432818;
+  width: 10px;
+  height: 20px;
+  top: 5px;
+  border-radius: 20px;
+  box-shadow: 10px 5px #f15bb5, 20px 0px #432818, 30px 2px #f15bb5, 
+              40px 5px #432818, 50px 5px #f15bb5, 60px 0px #432818, 
+              70px 5px #f15bb5, 80px 5px #432818, 90px 5px #f15bb5;
+}
+
+.plate:before {
+  content: "";
+  position: absolute;
+  background: repeating-linear-gradient(-45deg, #9b5de5, #9b5de5 3px, #00f5d4 3px, #00f5d4 6px);
+  width: 7px;
+  height: 25px;
+  top: -75px;
+  left: 61px;
+}
+
+.plate:after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 5px;
+  background-color: var(--text-color);
+  top: -80px;
+  left: 64px;
+}
+
+.flame {
+  position: absolute;
+  background-color: #fb5607;
+  border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+  transform: rotate(-45deg);
+  width: 15px;
+  height: 15px;
+  opacity: 0.7;
+  top: -93px;
+  left: 57px;
+}
+
+.cardInside {
+  position: absolute;
+  background-color: #fff;
+  width: var(--card-width);
+  height: var(--card-height);
+  z-index: -1;
+  left: 0;
+  top: 0;
+  box-shadow: inset 100px 20px 100px rgba(0,0,0,0.2);
+}
+
+.inside-text {
+  position: relative;
+  top: -160px;
+  transform: scale(0.7);
+}
+
+.wishes {
+  position: relative;
+  top: -100px;
+  margin: 25px;
+  font-size: 14px; /* Ajustar el tamaño de la fuente */
+  line-height: 1.5; /* Ajustar el interlineado */
+}
+
+p {
+  color: var(--text-color);
+}
+
+.name {
+  margin-left: 150px;
+}
+
+.flower{
+  width: 50px;
+  height: 50px;
+  margin-left: 200px; /* Ajusta la posición horizontal */
+  margin-top: -60px; /* Ajusta la posición vertical */
+  animation: giro 4s linear infinite;
+}
+
+.leaf{
+  position: absolute;
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  background-color: rgb(238, 71, 162);
+  border-radius: 2px 50px;
+  opacity: 0.8;
+  box-shadow: -5px -5px 2px rgba(0, 0, 0, 0.051);
+}
+
+.dot{
+  position: absolute;
+  z-index: 2;
+  width: 50px;
+  height: 50px;
+  background-color: #ebde2a;
+  border-radius: 50%;
+  animation: dot 4s ease-in-out infinite;
+}
+
+.leaf-0{
+  transform: rotate(0deg) translate(-35px, -35px) scale(2);
+}
+
+.leaf-1{
+  transform: rotate(22.5deg) translate(-35px, -35px) scale(2);
+}
+
+.leaf-2{
+  transform: rotate(45deg) translate(-35px, -35px) scale(2);
+}
+.leaf-3{
+  transform: rotate(67.5deg) translate(-35px, -35px) scale(2);
+}
+.leaf-4{
+  transform: rotate(90deg) translate(-35px, -35px) scale(2);
+}
+.leaf-5{
+  transform: rotate(112.5deg) translate(-35px, -35px) scale(2);
+}
+.leaf-6{
+  transform: rotate(135deg) translate(-35px, -35px) scale(2);
+}
+.leaf-7{
+  transform: rotate(157.5deg) translate(-35px, -35px) scale(2);
+}
+.leaf-8{
+  transform: rotate(180deg) translate(-35px, -35px) scale(2);
+}
+.leaf-9{
+  transform: rotate(202.5deg) translate(-35px, -35px) scale(2);
+}
+
+.leaf-10{
+  transform: rotate(225deg) translate(-35px, -35px) scale(2);
+}
+.leaf-11{
+  transform: rotate(247.5deg) translate(-35px, -35px) scale(2);
+}
+.leaf-12{
+  transform: rotate(270deg) translate(-35px, -35px) scale(2);
+}
+.leaf-13{
+  transform: rotate(292.5deg) translate(-35px, -35px) scale(2);
+}
+.leaf-14{
+  transform: rotate(315deg) translate(-35px, -35px) scale(2);
+}
+.leaf-15{
+  transform: rotate(337.5deg) translate(-35px, -35px) scale(2);
+}
+
+@keyframes giro{
+  0%{
+      transform: scale(0) translate(-35px, -35px);
+  }
+  30%{
+      transform: scale(1) rotate(50deg);
+  }
+  70%{
+      transform: scale(1) rotate(100deg);
+  }
+  80%{
+      transform: scale(1) rotate(180deg);
+  }
+  100%{
+      transform: scale(0);
+  }
+}
+
+@keyframes dot{
+  0%,12%{
+      transform: scale(0);
+  }
+  20%{
+      transform: scale(1.1);
+  }
+  25%{
+      transform: scale(0.95);
+  }
+  30%,55%{
+      transform: scale(1);
+  }
+  58%{
+      transform: scale(1.1);
+  }
+  70%,100%{
+      transform: scale(0);
+  }
+}
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  .flower {
+    margin-left: -200px; /* Centrar la flor horizontalmente */
+    margin-top: 650px; /* Mover la flor debajo de la tarjeta */
+    position: relative; /* Cambiar a posición relativa para ajustar el flujo */
+    top: auto; /* Restablecer la posición vertical */
+    left: auto; /* Restablecer la posición horizontal */
+    transform: translateX(-50%); /* Centrar horizontalmente */
+  }
+
+  .birthdayCard {
+    margin-bottom: 100px; /* Espacio para la flor debajo de la tarjeta */
+  }
+}
